@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../Contacts.Data/Contacts.Data.csproj" />
+  <Project Path="../Contacts.Logic/Contacts.Logic.csproj" />
+  <Project Path="Contacts.UI.csproj" />
+</Solution>
