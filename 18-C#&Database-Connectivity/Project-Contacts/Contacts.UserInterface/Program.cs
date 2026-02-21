@@ -8,20 +8,20 @@ namespace Contacts.UI
 {
     internal class Program
     {
-        static void TestFindContact(int ID)
+        static void TestFindContactByID(int ID)
         {
             clContact Contact = clContact.Find(ID);
 
             if (Contact != null)
             {
-                Console.WriteLine($"First Name : {Contact.FirstName}");
-                Console.WriteLine($"Last Name  : {Contact.LastName}");
+                Console.WriteLine($"First Name    : {Contact.FirstName}");
+                Console.WriteLine($"Last Name     : {Contact.LastName}");
                 Console.WriteLine($"Date Of Birth : {Contact.DateOfBirth}");
-                Console.WriteLine($"Address : {Contact.Address}");
-                Console.WriteLine($"Phone : {Contact.Phone}");
-                Console.WriteLine($"Email : {Contact.Email}");
-                Console.WriteLine($"Image Path : {Contact.ImagePath}");
-                Console.WriteLine($"Country ID : {Contact.CountryID}");
+                Console.WriteLine($"Address       : {Contact.Address}");
+                Console.WriteLine($"Phone         : {Contact.Phone}");
+                Console.WriteLine($"Email         : {Contact.Email}");
+                Console.WriteLine($"Image Path    : {Contact.ImagePath}");
+                Console.WriteLine($"Country ID    : {Contact.CountryID}");
             }
             else
                 Console.WriteLine($"Contact with ID {ID} was not exist");
@@ -32,7 +32,7 @@ namespace Contacts.UI
             clInfo.ReadContactInfo(Contact);
 
             if (Contact.Save())
-                Console.WriteLine($"Contact added successfully with id = {Contact.ID}");
+                Console.WriteLine($"Contact added successfully with ID = {Contact.ID}");
             else
                 Console.WriteLine("Contact was not added successfully");
         }
@@ -79,13 +79,13 @@ namespace Contacts.UI
         }
         static void TestIsContactExist(int ID)
         {
-            if(clContact.IsExistByID(ID))
+            if (clContact.IsExistByID(ID))
                 Console.WriteLine($"Contact with ID {ID} was exist");
             else
                 Console.WriteLine($"Contact with ID {ID} was not exist");
         }
 
-        static void TestFindCountry(int ID)
+        static void TestFindCountryByID(int ID)
         {
             clCountry Country = clCountry.Find(ID);
 
@@ -145,19 +145,30 @@ namespace Contacts.UI
 
             Console.WriteLine("Countries Data:");
             foreach (DataRow Row in Table.Rows)
-                Console.WriteLine($"{Row["ID"],-5}     {Row["Name"],-15}");
+            {
+                Console.WriteLine($"{Row["ID"],-5}     {Row["Name"],-15}       {Row["Code"],-3}        { Row["PhoneCode"],-3}");
+            }
+            ;
         }
-        static void TestIsCountryExist(int ID)
+        static void TestIsCountryExistByID(int ID)
         {
             if (clCountry.IsExistByID(ID))
                 Console.WriteLine($"Country with ID {ID} was exist");
             else
                 Console.WriteLine($"Country with ID {ID} was not exist");
         }
+        static void TestIsCountryExistByName(string Name)
+        {
+            if (clCountry.IsExistByName(Name))
+                Console.WriteLine($"Country with name {Name} was exist");
+            else
+                Console.WriteLine($"Country with name {Name} was not exist");
+        }
 
         static void Main()
         {
-            TestFindCountry(1);
+            TestIsCountryExistByName("United Kingdom");
+
         }
     }
 }

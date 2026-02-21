@@ -24,7 +24,7 @@ namespace Contacts.Logic.Contacts
 
         private bool _AddNew()
         {
-            int ID = clContactData.AddNewContact(FirstName, LastName, DateOfBirth, Address, Phone, Email, ImagePath, CountryID);
+            ID = clContactData.AddNewContact(FirstName, LastName, DateOfBirth, Address, Phone, Email, ImagePath, CountryID);
 
             return ID != 0;
         }

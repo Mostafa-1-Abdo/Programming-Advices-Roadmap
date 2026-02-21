@@ -13,39 +13,45 @@ namespace Contacts.Logic.Countries
 
         public int ID { set; get; }
         public string Name { set; get; }
+        public string Code { set; get; }
+        public string PhoneCode { set; get; }
        private  enMode _Mode = enMode.Add;
 
         private bool _AddNew()
         {
-            int ID = clCountryData.AddNewCountry(Name);
+             ID = clCountryData.AddNewCountry(Name,Code,PhoneCode);
 
             return ID != 0;
         }
 
         private bool _Update()
         {
-            return clCountryData.UpdateCountryByID(ID, Name);
+            return clCountryData.UpdateCountryByID(ID, Name,Code,PhoneCode);
         }
 
         public clCountry()
         {
-            this.ID = 0;
-            this.Name = null;
+            ID = 0;
+            Name = null;
+            Code = null;
+            PhoneCode = null;
             _Mode = enMode.Add;
         }
-        private clCountry(int ID, string Name)
+        private clCountry(int ID, string Name,string Code,string PhoneCode)
         {
             this.ID = ID;
             this.Name = Name;
+           this. Code =Code;
+           this. PhoneCode = PhoneCode;
             _Mode = enMode.Update;
         }
 
         static public clCountry Find(int ID)
         {
-            string Name;
+            string Name, Code, PhoneCode;
 
-            if (clCountryData.FindCountryInfoByID(ID,out Name))
-                return new clCountry(ID, Name);
+            if (clCountryData.FindCountryInfoByID(ID,out Name,out Code,out PhoneCode))
+                return new clCountry(ID, Name,Code,PhoneCode);
             return null;
         }
 

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using Contacts.Data;
 
 namespace Contacts.Data.Countries
 {
     public class clCountryData
     {
-        static public bool FindCountryInfoByID(int ID, out string Name)
+        static public bool FindCountryInfoByID(int ID, out string Name,out string Code,out string PhoneCode)
         {
             Name = null;
+            Code = null;
+            PhoneCode = null;
 
             bool IsFound = false;
 
@@ -31,7 +34,10 @@ namespace Contacts.Data.Countries
                     IsFound = true;
 
                     Name = (string)Reader["Name"];
-                
+                    Code = Reader["Code"] != DBNull.Value ? (string)Reader["Code"] : null;
+                    PhoneCode = Reader["PhoneCode"] != DBNull.Value ? (string)Reader["PhoneCode"] : null;
+
+
                     Reader.Close();
                 }
             }
@@ -46,9 +52,11 @@ namespace Contacts.Data.Countries
 
             return IsFound;
         }
-        static public bool FindCountryInfoByName(string Name,out int ID)
+        static public bool FindCountryInfoByName(string Name,out int ID, out string Code, out string PhoneCode)
         {
             ID = 0;
+            Code = null;
+            PhoneCode = null;
 
             bool IsFound = false;
 
@@ -70,6 +78,8 @@ namespace Contacts.Data.Countries
                     IsFound = true;
 
                     Name = (string)Reader["Name"];
+                    Code = Reader["Code"] != DBNull.Value ? (string)Reader["Code"] : null;
+                    PhoneCode = Reader["PhoneCode"] != DBNull.Value ? (string)Reader["PhoneCode"] : null;
 
                     Reader.Close();
                 }
@@ -149,20 +159,30 @@ namespace Contacts.Data.Countries
             return IsExist;
         }
 
-        static public int AddNewCountry(string Name)
+        static public int AddNewCountry(string Name,string Code,string PhoneCode)
         {
             int ID = 0;
 
             SqlConnection Connection = new SqlConnection(clDataAccessSettings.ConnectionInfo);
 
-            string sql = @"insert into Countries (Name)
+            string sql = @"insert into Countries (Name,Code,PhoneCode)
                            values
-                           (@Name)
+                           (@Name,@Code,@PhoneCode)
                            select SCOPE_IDENTITY()
                            ";
             SqlCommand Command = new SqlCommand(sql, Connection);
             Command.Parameters.AddWithValue("@Name", Name);
- 
+
+            if (Code != "")
+                Command.Parameters.AddWithValue("@Code", Code);
+            else
+                Command.Parameters.AddWithValue("@Code", DBNull.Value);
+
+            if(PhoneCode != "")
+                Command.Parameters.AddWithValue("@PhoneCode", PhoneCode);
+            else
+                Command.Parameters.AddWithValue("@PhoneCode", DBNull.Value);
+
             try
             {
                 Connection.Open();
@@ -185,18 +205,27 @@ namespace Contacts.Data.Countries
             return ID;
         }
 
-        static public bool UpdateCountryByID(int ID, string Name)
+        static public bool UpdateCountryByID(int ID, string Name,string Code,string PhoneCode)
         {
             int RowsAffected = 0;
 
             SqlConnection Connection = new SqlConnection(clDataAccessSettings.ConnectionInfo);
 
             string sql = @"update Countries
-                           set FirstName = @FirstName, LastName = @LastName, DateOfBirth = @DateOfBirth, Address = @Address, Phone = @Phone, Email = @Email, ImagePath = @ImagePath, CountryID = @CountryID
+                           set Name = @Name, Code = @Code, PhoneCode = @PhoneCode
                            where ID = @ID";
             SqlCommand Command = new SqlCommand(sql, Connection);
             Command.Parameters.AddWithValue("@ID", ID);
             Command.Parameters.AddWithValue("@Name", Name);
+            if (Code != "")
+                Command.Parameters.AddWithValue("@Code", Code);
+            else
+                Command.Parameters.AddWithValue("@Code", DBNull.Value);
+
+            if (PhoneCode != "")
+                Command.Parameters.AddWithValue("@PhoneCode", PhoneCode);
+            else
+                Command.Parameters.AddWithValue("@PhoneCode", DBNull.Value);
 
             try
             {
@@ -225,8 +254,6 @@ namespace Contacts.Data.Countries
                            where ID = @ID";
             SqlCommand Command = new SqlCommand(sql, Connection);
             Command.Parameters.AddWithValue("@ID", ID);
-
-
             try
             {
                 Connection.Open();
