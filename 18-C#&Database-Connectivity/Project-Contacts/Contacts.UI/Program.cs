@@ -148,7 +148,6 @@ namespace Contacts.UI
             {
                 Console.WriteLine($"{Row["ID"],-5}     {Row["Name"],-15}       {Row["Code"],-3}        { Row["PhoneCode"],-3}");
             }
-            ;
         }
         static void TestIsCountryExistByID(int ID)
         {
