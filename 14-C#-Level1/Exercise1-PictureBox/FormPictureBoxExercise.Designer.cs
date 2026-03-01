@@ -69,7 +69,7 @@
             this.RBBoy.TabStop = true;
             this.RBBoy.Text = "Boy";
             this.RBBoy.UseVisualStyleBackColor = true;
-            this.RBBoy.CheckedChanged += new System.EventHandler(this.RBBoy_CheckedChanged);
+            this.RBBoy.CheckedChanged += new System.EventHandler(this.RB_CheckedChanged);
             // 
             // RBGirl
             // 
@@ -82,7 +82,7 @@
             this.RBGirl.TabStop = true;
             this.RBGirl.Text = "Girl";
             this.RBGirl.UseVisualStyleBackColor = true;
-            this.RBGirl.CheckedChanged += new System.EventHandler(this.RBGirl_CheckedChanged);
+            this.RBGirl.CheckedChanged += new System.EventHandler(this.RB_CheckedChanged);
             // 
             // RBBook
             // 
@@ -95,7 +95,7 @@
             this.RBBook.TabStop = true;
             this.RBBook.Text = "Book";
             this.RBBook.UseVisualStyleBackColor = true;
-            this.RBBook.CheckedChanged += new System.EventHandler(this.RBBook_CheckedChanged);
+            this.RBBook.CheckedChanged += new System.EventHandler(this.RB_CheckedChanged);
             // 
             // RBPen
             // 
@@ -108,7 +108,7 @@
             this.RBPen.TabStop = true;
             this.RBPen.Text = "Pen";
             this.RBPen.UseVisualStyleBackColor = true;
-            this.RBPen.CheckedChanged += new System.EventHandler(this.RBPen_CheckedChanged);
+            this.RBPen.CheckedChanged += new System.EventHandler(this.RB_CheckedChanged);
             // 
             // FormPictureBoxExercise
             // 

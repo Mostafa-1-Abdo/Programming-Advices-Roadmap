@@ -23,32 +23,28 @@ namespace PictureBox_Exercise
             RBBoy.Checked = true;
         }
 
-        private void RBBoy_CheckedChanged(object sender, EventArgs e)
+        private void RB_CheckedChanged(object sender, EventArgs e)
         {
-            LTitle.Text = RBBoy.Text;
+            LTitle.Text = ((RadioButton)sender).Text;
 
-            PB.Image = Resources.Boy;
-        }
+            switch (LTitle.Text)
+            {
+                case "Boy":
+                    PB.Image = Resources.Boy;
+                    break;
 
-        private void RBGirl_CheckedChanged(object sender, EventArgs e)
-        {
-            LTitle.Text = RBGirl.Text;
+                case "Girl":
+                    PB.Image = Resources.Girl;
+                    break;
 
-            PB.Image = Resources.Girl;
-        }
+                case "Book":
+                    PB.Image = Resources.Book;
+                    break;
 
-        private void RBBook_CheckedChanged(object sender, EventArgs e)
-        {
-            LTitle.Text = RBBook.Text;
-
-            PB.Image = Resources.Book;
-        }
-
-        private void RBPen_CheckedChanged(object sender, EventArgs e)
-        {
-            LTitle.Text = RBPen.Text;
-
-            PB.Image = Resources.Pen;
+                case "Pen":
+                    PB.Image = Resources.Pen;
+                    break;
+            }
         }
     }
 }
