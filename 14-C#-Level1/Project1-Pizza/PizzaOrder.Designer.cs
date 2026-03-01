@@ -60,22 +60,24 @@
             this.LPrice = new System.Windows.Forms.Label();
             this.GBOrderSummary = new System.Windows.Forms.GroupBox();
             this.BOrderCancel = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GBWhereEat.SuspendLayout();
             this.GBToppings.SuspendLayout();
             this.GBCrustType.SuspendLayout();
             this.GBSize.SuspendLayout();
             this.GBOrderSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LTitle
             // 
             this.LTitle.AutoSize = true;
             this.LTitle.BackColor = System.Drawing.Color.Black;
-            this.LTitle.Font = new System.Drawing.Font("Impact", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTitle.Font = new System.Drawing.Font("Comic Sans MS", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LTitle.ForeColor = System.Drawing.Color.IndianRed;
-            this.LTitle.Location = new System.Drawing.Point(250, 9);
+            this.LTitle.Location = new System.Drawing.Point(132, 9);
             this.LTitle.Name = "LTitle";
-            this.LTitle.Size = new System.Drawing.Size(451, 75);
+            this.LTitle.Size = new System.Drawing.Size(619, 84);
             this.LTitle.TabIndex = 0;
             this.LTitle.Text = "MAKE YOUR PIZZA";
             // 
@@ -85,7 +87,7 @@
             this.GBWhereEat.Controls.Add(this.RBTakeOut);
             this.GBWhereEat.Controls.Add(this.RBEatIn);
             this.GBWhereEat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GBWhereEat.Font = new System.Drawing.Font("Akhbar MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.GBWhereEat.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBWhereEat.ForeColor = System.Drawing.Color.Black;
             this.GBWhereEat.Location = new System.Drawing.Point(323, 269);
             this.GBWhereEat.Name = "GBWhereEat";
@@ -201,7 +203,7 @@
             this.GBToppings.Controls.Add(this.CBMushrooms);
             this.GBToppings.Controls.Add(this.CBExtraChees);
             this.GBToppings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GBToppings.Font = new System.Drawing.Font("Akhbar MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.GBToppings.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBToppings.ForeColor = System.Drawing.Color.Black;
             this.GBToppings.Location = new System.Drawing.Point(286, 107);
             this.GBToppings.Name = "GBToppings";
@@ -212,7 +214,7 @@
             // 
             // BOrderPizza
             // 
-            this.BOrderPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BOrderPizza.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BOrderPizza.Location = new System.Drawing.Point(531, 334);
             this.BOrderPizza.Name = "BOrderPizza";
             this.BOrderPizza.Size = new System.Drawing.Size(104, 42);
@@ -223,7 +225,7 @@
             // 
             // BResetForm
             // 
-            this.BResetForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BResetForm.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BResetForm.Location = new System.Drawing.Point(241, 368);
             this.BResetForm.Name = "BResetForm";
             this.BResetForm.Size = new System.Drawing.Size(104, 42);
@@ -268,7 +270,7 @@
             this.GBCrustType.Controls.Add(this.RBThin);
             this.GBCrustType.Controls.Add(this.RBThink);
             this.GBCrustType.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GBCrustType.Font = new System.Drawing.Font("Akhbar MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.GBCrustType.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBCrustType.ForeColor = System.Drawing.Color.Black;
             this.GBCrustType.Location = new System.Drawing.Point(136, 269);
             this.GBCrustType.Name = "GBCrustType";
@@ -284,7 +286,7 @@
             this.GBSize.Controls.Add(this.RBSmall);
             this.GBSize.Controls.Add(this.RBMedium);
             this.GBSize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GBSize.Font = new System.Drawing.Font("Akhbar MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.GBSize.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBSize.ForeColor = System.Drawing.Color.Black;
             this.GBSize.Location = new System.Drawing.Point(150, 107);
             this.GBSize.Name = "GBSize";
@@ -341,11 +343,11 @@
             // LSize
             // 
             this.LSize.AutoSize = true;
-            this.LSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LSize.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LSize.ForeColor = System.Drawing.Color.Black;
             this.LSize.Location = new System.Drawing.Point(6, 21);
             this.LSize.Name = "LSize";
-            this.LSize.Size = new System.Drawing.Size(39, 15);
+            this.LSize.Size = new System.Drawing.Size(39, 16);
             this.LSize.TabIndex = 19;
             this.LSize.Text = "Size:";
             // 
@@ -354,7 +356,7 @@
             this.LSizeSelected.AutoSize = true;
             this.LSizeSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LSizeSelected.ForeColor = System.Drawing.Color.Black;
-            this.LSizeSelected.Location = new System.Drawing.Point(45, 21);
+            this.LSizeSelected.Location = new System.Drawing.Point(40, 21);
             this.LSizeSelected.Name = "LSizeSelected";
             this.LSizeSelected.Size = new System.Drawing.Size(53, 15);
             this.LSizeSelected.TabIndex = 20;
@@ -363,11 +365,11 @@
             // LToppings
             // 
             this.LToppings.AutoSize = true;
-            this.LToppings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LToppings.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LToppings.ForeColor = System.Drawing.Color.Black;
             this.LToppings.Location = new System.Drawing.Point(6, 83);
             this.LToppings.Name = "LToppings";
-            this.LToppings.Size = new System.Drawing.Size(70, 15);
+            this.LToppings.Size = new System.Drawing.Size(70, 16);
             this.LToppings.TabIndex = 23;
             this.LToppings.Text = "Toppings:";
             // 
@@ -376,7 +378,7 @@
             this.LCrustTypeSelected.AutoSize = true;
             this.LCrustTypeSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LCrustTypeSelected.ForeColor = System.Drawing.Color.Black;
-            this.LCrustTypeSelected.Location = new System.Drawing.Point(84, 52);
+            this.LCrustTypeSelected.Location = new System.Drawing.Point(86, 52);
             this.LCrustTypeSelected.Name = "LCrustTypeSelected";
             this.LCrustTypeSelected.Size = new System.Drawing.Size(31, 15);
             this.LCrustTypeSelected.TabIndex = 22;
@@ -385,11 +387,11 @@
             // LCrustType
             // 
             this.LCrustType.AutoSize = true;
-            this.LCrustType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LCrustType.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LCrustType.ForeColor = System.Drawing.Color.Black;
             this.LCrustType.Location = new System.Drawing.Point(6, 52);
             this.LCrustType.Name = "LCrustType";
-            this.LCrustType.Size = new System.Drawing.Size(78, 15);
+            this.LCrustType.Size = new System.Drawing.Size(83, 16);
             this.LCrustType.TabIndex = 21;
             this.LCrustType.Text = "Crust Type:";
             // 
@@ -406,22 +408,22 @@
             // LTotalPrice
             // 
             this.LTotalPrice.AutoSize = true;
-            this.LTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTotalPrice.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LTotalPrice.ForeColor = System.Drawing.Color.Black;
             this.LTotalPrice.Location = new System.Drawing.Point(6, 184);
             this.LTotalPrice.Name = "LTotalPrice";
-            this.LTotalPrice.Size = new System.Drawing.Size(80, 15);
+            this.LTotalPrice.Size = new System.Drawing.Size(83, 16);
             this.LTotalPrice.TabIndex = 27;
             this.LTotalPrice.Text = "Total Price:";
             // 
             // LWhereToEat
             // 
             this.LWhereToEat.AutoSize = true;
-            this.LWhereToEat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LWhereToEat.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LWhereToEat.ForeColor = System.Drawing.Color.Black;
             this.LWhereToEat.Location = new System.Drawing.Point(6, 153);
             this.LWhereToEat.Name = "LWhereToEat";
-            this.LWhereToEat.Size = new System.Drawing.Size(97, 15);
+            this.LWhereToEat.Size = new System.Drawing.Size(99, 16);
             this.LWhereToEat.TabIndex = 25;
             this.LWhereToEat.Text = "Where To Eat:";
             // 
@@ -430,7 +432,7 @@
             this.LWhereToEatSelected.AutoSize = true;
             this.LWhereToEatSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LWhereToEatSelected.ForeColor = System.Drawing.Color.Black;
-            this.LWhereToEatSelected.Location = new System.Drawing.Point(107, 153);
+            this.LWhereToEatSelected.Location = new System.Drawing.Point(99, 153);
             this.LWhereToEatSelected.Name = "LWhereToEatSelected";
             this.LWhereToEatSelected.Size = new System.Drawing.Size(38, 15);
             this.LWhereToEatSelected.TabIndex = 26;
@@ -461,7 +463,7 @@
             this.GBOrderSummary.Controls.Add(this.LToppings);
             this.GBOrderSummary.Controls.Add(this.LSizeSelected);
             this.GBOrderSummary.Controls.Add(this.LSize);
-            this.GBOrderSummary.Font = new System.Drawing.Font("Akhbar MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.GBOrderSummary.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBOrderSummary.ForeColor = System.Drawing.Color.Black;
             this.GBOrderSummary.Location = new System.Drawing.Point(532, 107);
             this.GBOrderSummary.Name = "GBOrderSummary";
@@ -473,7 +475,7 @@
             // BOrderCancel
             // 
             this.BOrderCancel.Enabled = false;
-            this.BOrderCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BOrderCancel.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BOrderCancel.Location = new System.Drawing.Point(649, 334);
             this.BOrderCancel.Name = "BOrderCancel";
             this.BOrderCancel.Size = new System.Drawing.Size(104, 42);
@@ -482,14 +484,23 @@
             this.BOrderCancel.UseVisualStyleBackColor = true;
             this.BOrderCancel.Click += new System.EventHandler(this.BOrderCancel_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Project1_Pizza.Properties.Resources.Pizza;
+            this.pictureBox1.Location = new System.Drawing.Point(261, -10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(547, 549);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormPizzaOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BOrderCancel);
             this.Controls.Add(this.GBSize);
             this.Controls.Add(this.GBOrderSummary);
@@ -499,6 +510,7 @@
             this.Controls.Add(this.GBWhereEat);
             this.Controls.Add(this.GBCrustType);
             this.Controls.Add(this.LTitle);
+            this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPizzaOrder";
             this.Text = "Pizza Order";
@@ -513,6 +525,7 @@
             this.GBSize.PerformLayout();
             this.GBOrderSummary.ResumeLayout(false);
             this.GBOrderSummary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,6 +564,7 @@
         private System.Windows.Forms.Label LPrice;
         private System.Windows.Forms.GroupBox GBOrderSummary;
         private System.Windows.Forms.Button BOrderCancel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

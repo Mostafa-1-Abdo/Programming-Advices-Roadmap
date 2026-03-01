@@ -83,5 +83,8 @@
   <ItemGroup>
     <None Include="Resources\ai-generated-delicious-pizza-on-black-stone-background-with-top-view-and-ingredients-empty-space-for-text-photoo.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pizza.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
