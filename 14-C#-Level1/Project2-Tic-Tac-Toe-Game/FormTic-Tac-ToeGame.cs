@@ -1,14 +1,8 @@
 ﻿using Project2_Tic_Tac_Toe_Game.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Project2_Tic_Tac_Toe_Game
 {
@@ -20,11 +14,11 @@ namespace Project2_Tic_Tac_Toe_Game
         }
         private enum enWinner : byte
         {
-            Player1, Player2, Draw
+           InProgress,Player1, Player2, Draw
         }
 
         private enPlayer Player = enPlayer.Player1;
-        private enWinner? Winner = null;
+        private enWinner? Winner = enWinner.InProgress;
 
         public FormGame()
         {
@@ -33,12 +27,11 @@ namespace Project2_Tic_Tac_Toe_Game
 
         private void FormGame_Paint(object sender, PaintEventArgs e)
         {
-            Color White = Color.FromArgb(255, 255, 255, 255);
-            Pen Pen = new Pen(White);
-            Pen.Width = 10;
+            Color White = Color.White;
+            Pen Pen = new Pen(White, 10);
 
-            Pen.StartCap = System.Drawing.Drawing2D.LineCap.Square;
-            Pen.EndCap = System.Drawing.Drawing2D.LineCap.Square;
+            Pen.StartCap = LineCap.Square;
+            Pen.EndCap = LineCap.Square;
 
             e.Graphics.DrawLine(Pen, 300, 100, 300, 400);
             e.Graphics.DrawLine(Pen, 450, 100, 450, 400);
@@ -56,17 +49,17 @@ namespace Project2_Tic_Tac_Toe_Game
             Update((PictureBox)sender);
         }
 
-        private void EndGame(enWinner Winner)
+        private void EndGame()
         {
             string MessageBoxText = null;
             switch (Winner)
-        {
+            {
                 case enWinner.Player1:
                     MessageBoxText = "The winner is player 1";
                     break;
 
                 case enWinner.Player2:
-                   MessageBoxText = "The winner is player 2";
+                    MessageBoxText = "The winner is player 2";
                     break;
 
                 case enWinner.Draw:
@@ -104,37 +97,14 @@ namespace Project2_Tic_Tac_Toe_Game
         }
         private enWinner? CheckWinner()
         {
-            if (CheckProbability(PB1, PB2, PB3))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB4, PB5, PB6))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB7, PB8, PB9))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB1, PB4, PB7))
-                return Player!= enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB2, PB5, PB8))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB3, PB6, PB9))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB1, PB5, PB9))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
-
-            if (CheckProbability(PB3, PB5, PB7))
-                return Player != enPlayer.Player1 ? enWinner.Player1 : enWinner.Player2;
+            if (CheckProbability(PB1, PB2, PB3) || CheckProbability(PB4, PB5, PB6) || CheckProbability(PB7, PB8, PB9) || CheckProbability(PB1, PB4, PB7) || CheckProbability(PB2, PB5, PB8)
+                || CheckProbability(PB3, PB6, PB9) || CheckProbability(PB1, PB5, PB9)|| CheckProbability(PB3, PB5, PB7))
+                return (enWinner)Player;
 
             if ((string)PB1.Tag != "?" && (string)PB2.Tag != "?" && (string)PB3.Tag != "?" && (string)PB4.Tag != "?" && (string)PB5.Tag != "?" && (string)PB6.Tag != "?" && (string)PB7.Tag != "?" && (string)PB8.Tag != "?" && (string)PB9.Tag != "?")
                 return enWinner.Draw;
 
-
             return null;
-
-
         }
         private void Update(PictureBox PB)
         {
@@ -142,21 +112,33 @@ namespace Project2_Tic_Tac_Toe_Game
             {
                 PB.Image = Resources.X;
                 PB.Tag = "X";
+
+                Winner = CheckWinner();
+                if (Winner != null)
+                {
+                    EndGame();
+                    return;
+                }
+
                 Player = enPlayer.Player2;
-                LPlayerTurn.Text = "Player 1";
+                LPlayerTurn.Text = "Player 2";
             }
             else
             {
                 PB.Image = Resources.O;
                 PB.Tag = "O";
+
+                Winner = CheckWinner();
+                if (Winner != null)
+                {
+                    EndGame();
+                    return;
+                }
+
                 Player = enPlayer.Player1;
-                LPlayerTurn.Text = "Player 2";
+                LPlayerTurn.Text = "Player 1";
             }
             PB.Enabled = false;
-
-            Winner = CheckWinner();
-            if (Winner != null)
-                EndGame(Winner.Value);
         }
 
         private void RestartPB(PictureBox PB)
