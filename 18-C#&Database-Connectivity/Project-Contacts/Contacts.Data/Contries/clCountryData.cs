@@ -8,12 +8,8 @@ namespace Contacts.Data.Countries
 {
     public class clCountryData
     {
-        static public bool FindCountryInfoByID(int ID, out string Name,out string Code,out string PhoneCode)
+        static public bool FindCountry(int ID, ref string Name, ref string Code, ref string PhoneCode)
         {
-            Name = null;
-            Code = null;
-            PhoneCode = null;
-
             bool IsFound = false;
 
             SqlConnection Connection = new SqlConnection(clDataAccessSettings.ConnectionInfo);
@@ -52,12 +48,8 @@ namespace Contacts.Data.Countries
 
             return IsFound;
         }
-        static public bool FindCountryInfoByName(string Name,out int ID, out string Code, out string PhoneCode)
+        static public bool FindCountry(string Name, ref int ID, ref string Code, ref string PhoneCode)
         {
-            ID = 0;
-            Code = null;
-            PhoneCode = null;
-
             bool IsFound = false;
 
             SqlConnection Connection = new SqlConnection(clDataAccessSettings.ConnectionInfo);
@@ -96,7 +88,7 @@ namespace Contacts.Data.Countries
             return IsFound;
         }
 
-        static public bool IsCountryExistByID(int ID)
+        static public bool IsCountryExist(int ID)
         {
             bool IsExist = false;
 
@@ -127,7 +119,7 @@ namespace Contacts.Data.Countries
 
             return IsExist;
         }
-        static public bool IsCountryExistByName(string Name)
+        static public bool IsCountryExist(string Name)
         {
             bool IsExist = false;
 
@@ -205,7 +197,7 @@ namespace Contacts.Data.Countries
             return ID;
         }
 
-        static public bool UpdateCountryByID(int ID, string Name,string Code,string PhoneCode)
+        static public bool UpdateCountry(int ID, string Name,string Code,string PhoneCode)
         {
             int RowsAffected = 0;
 
@@ -244,7 +236,7 @@ namespace Contacts.Data.Countries
             return RowsAffected != 0;
         }
 
-        static public bool DeleteCountryByID(int ID)
+        static public bool DeleteCountry(int ID)
         {
             int RowsAffected = 0;
 

@@ -7,25 +7,16 @@ namespace Contacts.Data.Contacts
 {
     public class clContactData
     {
-        static public bool FindContactInfoByID(int ID, out string FirstName, out string LastName, out DateTime DateOfBirth, out string Address, out string Phone, out string Email, out string ImagePath, out int CountryID)
+        static public bool FindContact(int ID, ref string FirstName, ref string LastName, ref DateTime DateOfBirth, ref string Address, ref string Phone, ref string Email, ref string ImagePath, ref int CountryID)
         {
-            FirstName = "";
-            LastName = "";
-            DateOfBirth = new DateTime();
-            Address = "";
-            Phone = "";
-            Email = "";
-            ImagePath = "";
-            CountryID = 0;
-
             bool IsFound = false;
 
             SqlConnection Connection = new SqlConnection(clDataAccessSettings.ConnectionInfo);
 
             string sql = @"select * from Contacts 
-                             where ID = @ID";
+                           where ID = @ID";
             SqlCommand Command = new SqlCommand(sql, Connection);
-            Command.Parameters.AddWithValue("ID", ID);
+            Command.Parameters.AddWithValue("@ID", ID);
 
             try
             {
@@ -61,7 +52,7 @@ namespace Contacts.Data.Contacts
             return IsFound;
         }
 
-        static public bool IsContactExistByID(int ID)
+        static public bool IsContactExist(int ID)
         {
             bool IsExist = false;
 
@@ -113,10 +104,10 @@ namespace Contacts.Data.Contacts
             Command.Parameters.AddWithValue("@Email", Email);
             Command.Parameters.AddWithValue("@CountryID", CountryID);
 
-            if (ImagePath != "")
-                Command.Parameters.AddWithValue("@ImagePath", ImagePath);
-            else
+            if (string.IsNullOrWhiteSpace(ImagePath) || ImagePath == "")
                 Command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
+            else
+                Command.Parameters.AddWithValue("@ImagePath", ImagePath);
 
             try
             {
@@ -140,7 +131,7 @@ namespace Contacts.Data.Contacts
             return ID;
         }
 
-        static public bool UpdateContactByID(int ID, string FirstName, string LastName, DateTime DateOfBirth, string Address, string Phone, string Email, string ImagePath, int CountryID)
+        static public bool UpdateContact(int ID, string FirstName, string LastName, DateTime DateOfBirth, string Address, string Phone, string Email, string ImagePath, int CountryID)
         {
             int RowsAffected = 0;
 
@@ -159,10 +150,10 @@ namespace Contacts.Data.Contacts
             Command.Parameters.AddWithValue("@Email", Email);
             Command.Parameters.AddWithValue("@CountryID", CountryID);
 
-            if (ImagePath != "")
-                Command.Parameters.AddWithValue("@ImagePath", ImagePath);
-            else
+            if (string.IsNullOrWhiteSpace(ImagePath) || ImagePath == "")
                 Command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
+            else
+                Command.Parameters.AddWithValue("@ImagePath", ImagePath);
 
             try
             {
@@ -181,7 +172,7 @@ namespace Contacts.Data.Contacts
             return RowsAffected != 0;
         }
 
-        static public bool DeleteContactByID(int ID)
+        static public bool DeleteContact(int ID)
         {
             int RowsAffected = 0;
 
@@ -191,7 +182,6 @@ namespace Contacts.Data.Contacts
                            where ID = @ID";
             SqlCommand Command = new SqlCommand(sql, Connection);
             Command.Parameters.AddWithValue("@ID", ID);
-
 
             try
             {
@@ -240,6 +230,5 @@ namespace Contacts.Data.Contacts
 
             return Table;
         }
-
     }
 }

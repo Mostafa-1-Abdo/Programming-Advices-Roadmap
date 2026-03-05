@@ -4,29 +4,29 @@ using System.Data;
 
 namespace Contacts.Logic.Countries
 {
-   public class clCountry
+    public class clCountry
     {
         public enum enMode : byte
         {
-            Add, Update, Delete
+            Create, Update, Delete
         }
 
         public int ID { set; get; }
         public string Name { set; get; }
         public string Code { set; get; }
         public string PhoneCode { set; get; }
-       private  enMode _Mode = enMode.Add;
+        private enMode _Mode;
 
         private bool _AddNew()
         {
-             ID = clCountryData.AddNewCountry(Name,Code,PhoneCode);
+            ID = clCountryData.AddNewCountry(Name, Code, PhoneCode);
 
             return ID != 0;
         }
 
         private bool _Update()
         {
-            return clCountryData.UpdateCountryByID(ID, Name,Code,PhoneCode);
+            return clCountryData.UpdateCountry(ID, Name, Code, PhoneCode);
         }
 
         public clCountry()
@@ -35,23 +35,32 @@ namespace Contacts.Logic.Countries
             Name = null;
             Code = null;
             PhoneCode = null;
-            _Mode = enMode.Add;
+            _Mode = enMode.Create;
         }
-        private clCountry(int ID, string Name,string Code,string PhoneCode)
+        private clCountry(int id, string name, string code, string phoneCode)
         {
-            this.ID = ID;
-            this.Name = Name;
-           this. Code =Code;
-           this. PhoneCode = PhoneCode;
+            ID = id;
+            Name = name;
+            Code = code;
+            PhoneCode = phoneCode;
             _Mode = enMode.Update;
         }
 
         static public clCountry Find(int ID)
         {
-            string Name, Code, PhoneCode;
+            string Name = null, Code = null, PhoneCode = null;
 
-            if (clCountryData.FindCountryInfoByID(ID,out Name,out Code,out PhoneCode))
-                return new clCountry(ID, Name,Code,PhoneCode);
+            if (clCountryData.FindCountry(ID, ref Name, ref Code, ref PhoneCode))
+                return new clCountry(ID, Name, Code, PhoneCode);
+            return null;
+        }
+        static public clCountry Find(string Name)
+        {
+            int ID = 0;
+            string Code = null, PhoneCode = null;
+
+            if (clCountryData.FindCountry(Name, ref ID, ref Code, ref PhoneCode))
+                return new clCountry(ID, Name, Code, PhoneCode);
             return null;
         }
 
@@ -59,7 +68,7 @@ namespace Contacts.Logic.Countries
         {
             switch (_Mode)
             {
-                case enMode.Add:
+                case enMode.Create:
                     if (_AddNew())
                     {
                         _Mode = enMode.Update;
@@ -69,13 +78,7 @@ namespace Contacts.Logic.Countries
                         return false;
 
                 case enMode.Update:
-                    if (_Update())
-                    {
-                        _Update();
-                        return true;
-                    }
-                    else
-                        return false;
+                    return _Update();
 
                 default:
                     return false;
@@ -84,16 +87,16 @@ namespace Contacts.Logic.Countries
 
         static public bool Delete(int ID)
         {
-            return clCountryData.DeleteCountryByID(ID);
+            return clCountryData.DeleteCountry(ID);
         }
 
-        static public bool IsExistByID(int ID)
+        static public bool IsExist(int ID)
         {
-            return clCountryData.IsCountryExistByID(ID);
+            return clCountryData.IsCountryExist(ID);
         }
-        static public bool IsExistByName(string Name)
+        static public bool IsExist(string Name)
         {
-            return clCountryData.IsCountryExistByName(Name);
+            return clCountryData.IsCountryExist(Name);
         }
 
         static public DataTable GetAllCountries()

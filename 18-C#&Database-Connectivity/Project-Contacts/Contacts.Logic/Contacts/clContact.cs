@@ -8,7 +8,7 @@ namespace Contacts.Logic.Contacts
     {
         public enum enMode : byte
         {
-            Add, Update, Delete
+            Create, Update, Delete
         }
 
         public int ID { set; get; }
@@ -20,7 +20,7 @@ namespace Contacts.Logic.Contacts
         public string Email { set; get; }
         public string ImagePath { set; get; }
         public int CountryID { set; get; }
-        private enMode _Mode = enMode.Add;
+        private enMode _Mode;
 
         private bool _AddNew()
         {
@@ -31,43 +31,43 @@ namespace Contacts.Logic.Contacts
 
         private bool _Update()
         {
-            return clContactData.UpdateContactByID(ID, FirstName, LastName, DateOfBirth, Address, Phone, Email, ImagePath, CountryID);
+            return clContactData.UpdateContact(ID, FirstName, LastName, DateOfBirth, Address, Phone, Email, ImagePath, CountryID);
         }
 
         public clContact()
         {
-            this.ID = 0;
-            this.FirstName = null;
-            this.LastName = null;
-            this.DateOfBirth = DateTime.Today;
-            this.Address = null;
-            this.Phone = null;
-            this.Email = null;
-            this.ImagePath = null;
-            this.CountryID = 0;
-            _Mode = enMode.Add;
+            ID = 0;
+            FirstName = null;
+            LastName = null;
+            DateOfBirth = DateTime.Today;
+            Address = null;
+            Phone = null;
+            Email = null;
+            ImagePath = null;
+            CountryID = 0;
+            _Mode = enMode.Create;
         }
-        private clContact(int ID, string FirstName, string LastName, DateTime DataOfBirth, string Address, string Phone, string Email, string ImagePath, int CountryID)
+        private clContact(int id, string firstName, string lastName, DateTime dataOfBirth, string address, string phone, string email, string imagePath, int countryID)
         {
-            this.ID = ID;
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.DateOfBirth = DataOfBirth;
-            this.Address = Address;
-            this.Phone = Phone;
-            this.Email = Email;
-            this.ImagePath = ImagePath;
-            this.CountryID = CountryID;
+            ID = id;
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dataOfBirth;
+            Address = address;
+            Phone = phone;
+            Email = email;
+            ImagePath = imagePath;
+            CountryID = countryID;
             _Mode = enMode.Update;
         }
 
         static public clContact Find(int ID)
         {
-            string FirstName, LastName, Address, Phone, Email, ImagePath;
-            DateTime DateOfBirth = DateTime.Today;
+            string FirstName = null, LastName = null, Address = null, Phone = null, Email = null, ImagePath = null;
+            DateTime DateOfBirth = new DateTime();
             int CountryID = 0;
 
-            if (clContactData.FindContactInfoByID(ID, out FirstName, out LastName, out DateOfBirth, out Address, out Phone, out Email, out ImagePath, out CountryID))
+            if (clContactData.FindContact(ID, ref FirstName, ref LastName, ref DateOfBirth, ref Address, ref Phone, ref Email, ref ImagePath, ref CountryID))
                 return new clContact(ID, FirstName, LastName, DateOfBirth, Address, Phone, Email, ImagePath, CountryID);
             return null;
         }
@@ -76,37 +76,30 @@ namespace Contacts.Logic.Contacts
         {
             switch (_Mode)
             {
-                case enMode.Add:
+                case enMode.Create:
                     if (_AddNew())
                     {
                         _Mode = enMode.Update;
                         return true;
                     }
-                    else
-                        return false;
+                    return false;
 
                 case enMode.Update:
-                    if (_Update())
-                    {
-                        _Update();
-                        return true;
-                    }
-                    else
-                        return false;
+                    return _Update();
 
                 default:
                     return false;
             }
         }
 
-       static public bool Delete(int ID)
+        static public bool Delete(int ID)
         {
-            return clContactData.DeleteContactByID(ID);
+            return clContactData.DeleteContact(ID);
         }
 
-        static public bool IsExistByID(int ID)
+        static public bool IsExist(int ID)
         {
-            return clContactData.IsContactExistByID(ID);
+            return clContactData.IsContactExist(ID);
         }
 
         static public DataTable GetAllContacts()

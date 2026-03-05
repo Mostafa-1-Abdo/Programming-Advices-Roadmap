@@ -8,6 +8,7 @@ namespace Contacts.UI
 {
     internal class Program
     {
+        //Contacts
         static void TestFindContactByID(int ID)
         {
             clContact Contact = clContact.Find(ID);
@@ -56,7 +57,7 @@ namespace Contacts.UI
         }
         static void TestDeleteContact(int ID)
         {
-            if (clContact.IsExistByID(ID))
+            if (clContact.IsExist(ID))
             {
                 if (clContact.Delete(ID))
                 {
@@ -74,17 +75,21 @@ namespace Contacts.UI
             DataTable Table = clContact.GetAllContacts();
 
             Console.WriteLine("Contacts Data:");
-            foreach (DataRow Row in Table.Rows)
-                Console.WriteLine($"{Row["ID"],-5}     {Row["FirstName"],-10}      {Row["LastName"],-10}");
+            if (Table.Rows.Count != 0)
+                foreach (DataRow Row in Table.Rows)
+                    Console.WriteLine($"{Row["ID"],-5}     {Row["FirstName"],-10}      {Row["LastName"],-10}");
+            else
+                Console.WriteLine("There isn't any contact");
         }
         static void TestIsContactExist(int ID)
         {
-            if (clContact.IsExistByID(ID))
+            if (clContact.IsExist(ID))
                 Console.WriteLine($"Contact with ID {ID} was exist");
             else
                 Console.WriteLine($"Contact with ID {ID} was not exist");
         }
 
+        //Countries
         static void TestFindCountryByID(int ID)
         {
             clCountry Country = clCountry.Find(ID);
@@ -126,7 +131,7 @@ namespace Contacts.UI
         }
         static void TestDeleteCountry(int ID)
         {
-            if (clCountry.IsExistByID(ID))
+            if (clCountry.IsExist(ID))
             {
                 if (clCountry.Delete(ID))
                 {
@@ -146,19 +151,19 @@ namespace Contacts.UI
             Console.WriteLine("Countries Data:");
             foreach (DataRow Row in Table.Rows)
             {
-                Console.WriteLine($"{Row["ID"],-5}     {Row["Name"],-15}       {Row["Code"],-3}        { Row["PhoneCode"],-3}");
+                Console.WriteLine($"{Row["ID"],-5}     {Row["Name"],-15}       {Row["Code"],-3}        {Row["PhoneCode"],-3}");
             }
         }
         static void TestIsCountryExistByID(int ID)
         {
-            if (clCountry.IsExistByID(ID))
+            if (clCountry.IsExist(ID))
                 Console.WriteLine($"Country with ID {ID} was exist");
             else
                 Console.WriteLine($"Country with ID {ID} was not exist");
         }
         static void TestIsCountryExistByName(string Name)
         {
-            if (clCountry.IsExistByName(Name))
+            if (clCountry.IsExist(Name))
                 Console.WriteLine($"Country with name {Name} was exist");
             else
                 Console.WriteLine($"Country with name {Name} was not exist");
@@ -166,8 +171,7 @@ namespace Contacts.UI
 
         static void Main()
         {
-            TestIsCountryExistByName("United Kingdom");
-
+            TestListContact();
         }
     }
 }
