@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../Contacts.Data/Contacts.Data.csproj" Id="c11a5994-6b77-4497-a6e9-921be9c97f93" />
+  <Project Path="../Contacts.Logic/Contacts.Logic.csproj" Id="8f819af7-67cf-47b5-97f0-2620b930ba01" />
+  <Project Path="WinForm-Appliaction.csproj" Id="24811da2-ae51-4bb1-a9dc-09422fb69948" />
+</Solution>

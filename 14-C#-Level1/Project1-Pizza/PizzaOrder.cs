@@ -24,6 +24,7 @@ namespace Project1_Pizza
         {
             ResetForm();
         }
+
         //Size Group
         private void RBSmall_CheckedChanged(object sender, EventArgs e)
         {
@@ -50,62 +51,72 @@ namespace Project1_Pizza
         private void RBThin_CheckedChanged(object sender, EventArgs e)
         {
             LCrustTypeSelected.Text = RBThin.Text;
+
             UpdateTotalPrice();
         }
 
         private void RBThink_CheckedChanged(object sender, EventArgs e)
         {
             LCrustTypeSelected.Text = RBThink.Text;
+
             UpdateTotalPrice();
         }
 
         //Toppings Group
         private void CBExtraChees_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateTotalPrice();
             UpdateToppingsOptions();
+
+            UpdateTotalPrice();
         }
 
         private void CBMushrooms_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateTotalPrice();
             UpdateToppingsOptions();
+
+            UpdateTotalPrice();
         }
 
         private void CBTomatoes_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateTotalPrice();
             UpdateToppingsOptions();
+
+            UpdateTotalPrice();
         }
 
         private void CBOnion_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateTotalPrice();
             UpdateToppingsOptions();
+
+            UpdateTotalPrice();
         }
 
         private void CBOlives_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateTotalPrice();
             UpdateToppingsOptions();
+
+            UpdateTotalPrice();
         }
 
         private void CBGreenPeppers_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateTotalPrice();
             UpdateToppingsOptions();
+
+            UpdateTotalPrice();
         }
 
         //Where To Eat Group
         private void RBEatIn_CheckedChanged(object sender, EventArgs e)
         {
             LWhereToEatSelected.Text = RBEatIn.Text;
+
             UpdateTotalPrice();
         }
 
         private void RBTakeOut_CheckedChanged(object sender, EventArgs e)
         {
             LWhereToEatSelected.Text = RBTakeOut.Text;
+
             UpdateTotalPrice();
         }
 
@@ -128,7 +139,7 @@ namespace Project1_Pizza
             LToppingsSelected.Text = ToppingsSelected.Count != 0 ? string.Join(", ", ToppingsSelected) : "No Toppings";
         }
 
-        private double GetSizePrise()
+        private double GetSizePrice()
         {
             if (RBSmall.Checked)
                 return Convert.ToDouble(RBSmall.Tag);
@@ -137,14 +148,14 @@ namespace Project1_Pizza
             else
                 return Convert.ToDouble(RBLarg.Tag);
         }
-        private double GetCrustTypePrise()
+        private double GetCrustTypePrice()
         {
             if (RBThin.Checked)
                 return Convert.ToDouble(RBThin.Tag);
             else
                 return Convert.ToDouble(RBThink.Tag);
         }
-        private double GetToppingsPrise()
+        private double GetToppingsPrice()
         {
             double Price = 0;
 
@@ -163,7 +174,7 @@ namespace Project1_Pizza
         }
         private void UpdateTotalPrice()
         {
-            double Price = GetSizePrise() + GetCrustTypePrise() + GetToppingsPrise();
+            double Price = GetSizePrice() + GetCrustTypePrice() + GetToppingsPrice();
 
             LPrice.Text = "$" + Price.ToString();
         }

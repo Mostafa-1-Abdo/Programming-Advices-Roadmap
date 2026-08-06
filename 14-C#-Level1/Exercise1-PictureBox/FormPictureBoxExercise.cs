@@ -18,11 +18,6 @@ namespace PictureBox_Exercise
             InitializeComponent();
         }
 
-        private void FormPictureBoxExercise_Load(object sender, EventArgs e)
-        {
-            RBBoy.Checked = true;
-        }
-
         private void RB_CheckedChanged(object sender, EventArgs e)
         {
             LTitle.Text = ((RadioButton)sender).Text;

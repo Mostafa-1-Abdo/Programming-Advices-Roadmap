@@ -37,7 +37,6 @@
             // 
             // PB
             // 
-            this.PB.Image = global::Exercise2_ComboBox.Properties.Resources.Boy;
             this.PB.Location = new System.Drawing.Point(174, 79);
             this.PB.Name = "PB";
             this.PB.Size = new System.Drawing.Size(435, 244);
@@ -61,13 +60,14 @@
             this.CBPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBPicture.FormattingEnabled = true;
             this.CBPicture.Items.AddRange(new object[] {
+            "Book",
             "Boy",
             "Girl",
-            "Book",
             "Pen"});
             this.CBPicture.Location = new System.Drawing.Point(325, 342);
             this.CBPicture.Name = "CBPicture";
             this.CBPicture.Size = new System.Drawing.Size(221, 28);
+            this.CBPicture.Sorted = true;
             this.CBPicture.TabIndex = 4;
             this.CBPicture.SelectedIndexChanged += new System.EventHandler(this.CBPicture_SelectedIndexChanged);
             // 

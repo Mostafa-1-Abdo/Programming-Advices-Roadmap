@@ -50,7 +50,6 @@
             // 
             // PB
             // 
-            this.PB.Image = global::PictureBox_Exercise.Properties.Resources.Boy;
             this.PB.Location = new System.Drawing.Point(187, 77);
             this.PB.Name = "PB";
             this.PB.Size = new System.Drawing.Size(435, 244);
@@ -123,7 +122,6 @@
             this.Controls.Add(this.LTitle);
             this.Name = "FormPictureBoxExercise";
             this.Text = "Picture box exercise";
-            this.Load += new System.EventHandler(this.FormPictureBoxExercise_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

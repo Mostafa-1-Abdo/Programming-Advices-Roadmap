@@ -14,11 +14,11 @@ namespace Project2_Tic_Tac_Toe_Game
         }
         private enum enWinner : byte
         {
-           InProgress,Player1, Player2, Draw
+            InProgress, Player1, Player2, Draw
         }
 
         private enPlayer Player = enPlayer.Player1;
-        private enWinner? Winner = enWinner.InProgress;
+        private enWinner Winner = enWinner.InProgress;
 
         public FormGame()
         {
@@ -27,8 +27,7 @@ namespace Project2_Tic_Tac_Toe_Game
 
         private void FormGame_Paint(object sender, PaintEventArgs e)
         {
-            Color White = Color.White;
-            Pen Pen = new Pen(White, 10);
+            Pen Pen = new Pen(Color.White, 10);
 
             Pen.StartCap = LineCap.Square;
             Pen.EndCap = LineCap.Square;
@@ -69,18 +68,19 @@ namespace Project2_Tic_Tac_Toe_Game
             }
             MessageBox.Show(MessageBoxText, "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            LPlayerTurn.Text = "Game Over";
-            LWinner.Text = (Winner == enWinner.Draw) ? "Draw" : Winner == enWinner.Player1 ? "Player 1" : "Player 2";
+            lb_Turn.Text = null;
+            lb_PlayerTurn.Text = "Game Over";
+            lb_WinnerPlayer.Text = (Winner == enWinner.Draw) ? "Draw" : Winner == enWinner.Player1 ? "Player 1" : "Player 2";
 
-            PB1.Enabled = false;
-            PB2.Enabled = false;
-            PB3.Enabled = false;
-            PB4.Enabled = false;
-            PB5.Enabled = false;
-            PB6.Enabled = false;
-            PB7.Enabled = false;
-            PB8.Enabled = false;
-            PB9.Enabled = false;
+            pb_1.Enabled = false;
+            pb_2.Enabled = false;
+            pb_3.Enabled = false;
+            pb_4.Enabled = false;
+            pb_5.Enabled = false;
+            pb_6.Enabled = false;
+            pb_7.Enabled = false;
+            pb_8.Enabled = false;
+            pb_9.Enabled = false;
         }
         private bool CheckProbability(PictureBox PB1, PictureBox PB2, PictureBox PB3)
         {
@@ -95,16 +95,16 @@ namespace Project2_Tic_Tac_Toe_Game
 
             return false;
         }
-        private enWinner? CheckWinner()
+        private enWinner CheckWinner()
         {
-            if (CheckProbability(PB1, PB2, PB3) || CheckProbability(PB4, PB5, PB6) || CheckProbability(PB7, PB8, PB9) || CheckProbability(PB1, PB4, PB7) || CheckProbability(PB2, PB5, PB8)
-                || CheckProbability(PB3, PB6, PB9) || CheckProbability(PB1, PB5, PB9)|| CheckProbability(PB3, PB5, PB7))
-                return (enWinner)Player;
-
-            if ((string)PB1.Tag != "?" && (string)PB2.Tag != "?" && (string)PB3.Tag != "?" && (string)PB4.Tag != "?" && (string)PB5.Tag != "?" && (string)PB6.Tag != "?" && (string)PB7.Tag != "?" && (string)PB8.Tag != "?" && (string)PB9.Tag != "?")
+            if ((string)pb_1.Tag != "?" && (string)pb_2.Tag != "?" && (string)pb_3.Tag != "?" && (string)pb_4.Tag != "?" && (string)pb_5.Tag != "?" && (string)pb_6.Tag != "?" && (string)pb_7.Tag != "?" && (string)pb_8.Tag != "?" && (string)pb_9.Tag != "?")
                 return enWinner.Draw;
 
-            return null;
+            if (CheckProbability(pb_1, pb_2, pb_3) || CheckProbability(pb_4, pb_5, pb_6) || CheckProbability(pb_7, pb_8, pb_9) || CheckProbability(pb_1, pb_4, pb_7) || CheckProbability(pb_2, pb_5, pb_8)
+                || CheckProbability(pb_3, pb_6, pb_9) || CheckProbability(pb_1, pb_5, pb_9) || CheckProbability(pb_3, pb_5, pb_7))
+                return (enWinner)Player;
+
+            return enWinner.InProgress;
         }
         private void Update(PictureBox PB)
         {
@@ -114,14 +114,9 @@ namespace Project2_Tic_Tac_Toe_Game
                 PB.Tag = "X";
 
                 Winner = CheckWinner();
-                if (Winner != null)
-                {
-                    EndGame();
-                    return;
-                }
 
                 Player = enPlayer.Player2;
-                LPlayerTurn.Text = "Player 2";
+                lb_PlayerTurn.Text = "Player 2";
             }
             else
             {
@@ -129,14 +124,15 @@ namespace Project2_Tic_Tac_Toe_Game
                 PB.Tag = "O";
 
                 Winner = CheckWinner();
-                if (Winner != null)
-                {
-                    EndGame();
-                    return;
-                }
 
                 Player = enPlayer.Player1;
-                LPlayerTurn.Text = "Player 1";
+                lb_PlayerTurn.Text = "Player 1";
+            }
+
+            if (Winner != enWinner.InProgress)
+            {
+                EndGame();
+                return;
             }
             PB.Enabled = false;
         }
@@ -150,19 +146,48 @@ namespace Project2_Tic_Tac_Toe_Game
         }
         private void BRestartGame_Click(object sender, EventArgs e)
         {
-            RestartPB(PB1);
-            RestartPB(PB2);
-            RestartPB(PB3);
-            RestartPB(PB4);
-            RestartPB(PB5);
-            RestartPB(PB6);
-            RestartPB(PB7);
-            RestartPB(PB8);
-            RestartPB(PB9);
+            if (Winner == enWinner.InProgress)
+            {
+                if (MessageBox.Show("Are you sure?", "Waring", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+            }
+
+            RestartPB(pb_1);
+            RestartPB(pb_2);
+            RestartPB(pb_3);
+            RestartPB(pb_4);
+            RestartPB(pb_5);
+            RestartPB(pb_6);
+            RestartPB(pb_7);
+            RestartPB(pb_8);
+            RestartPB(pb_9);
 
             Player = enPlayer.Player1;
-            LPlayerTurn.Text = "Player 1";
-            LWinner.Text = "In Progress";
+            lb_Turn.Text = "Turn";
+            lb_PlayerTurn.Text = "Player 1";
+            lb_WinnerPlayer.Text = "In Progress";
+
+        }
+
+        private void bt_Start_Click(object sender, EventArgs e)
+        {
+            bt_Start.Visible = false;
+
+            lb_Turn.Visible = true;
+            lb_PlayerTurn.Visible = true;
+            lb_Winner.Visible = true;
+            lb_WinnerPlayer.Visible = true;
+            bt_RestartGame.Visible = true;
+
+            pb_1.Enabled = true;
+            pb_2.Enabled = true;
+            pb_3.Enabled = true;
+            pb_4.Enabled = true;
+            pb_5.Enabled = true;
+            pb_6.Enabled = true;
+            pb_7.Enabled = true;
+            pb_8.Enabled = true;
+            pb_9.Enabled = true;
         }
     }
 }
