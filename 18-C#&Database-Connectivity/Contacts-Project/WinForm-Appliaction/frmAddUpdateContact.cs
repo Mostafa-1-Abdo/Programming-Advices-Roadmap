@@ -171,7 +171,7 @@ namespace WinForm_Appliaction
                 _ShowSaveResult(true);
 
                 _Mode = enMode.Update;
-                Text = "Add Contact";
+                Text = "Update Contact";
                 lb_Title.Text = "Update Contact";
                 lb_ID.Text = _Contact.ID.ToString();
 
