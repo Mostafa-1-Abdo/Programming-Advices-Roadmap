@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="project-7-undo-redo.vcxproj" Id="6b387b45-d315-4119-bb84-8c861e91078c" />
+</Solution>
